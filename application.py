@@ -4,22 +4,27 @@ from flask import Flask
 
 application = Flask(__name__)
 
-ENV = os.environ.get('FLASK_ENV', 'dev')
 
+ENV = os.environ.get('FLASK_ENV', 'developerskie')
+
+# Konfiguracja zależna od środowiska
 if ENV == 'produkcja':
-    #Ustawienia dla wersji produkcyjnej
+    # Ustawienia dla wersji produkcyjnej
     # np. połączenie z bazą danych
     pass
 else:
-    # Ustawienie dla wersji developerskiej
+    # Ustawienia dla wersji developerskiej
     # np. użycie bazy sqlite
     pass
 
 @application.route('/')
 def hello_world():
-    return(f'<h1>Hello BigData z Pythonem!</h1><p>Przykład CI/CD - automatyczne wdrażanie!</p>'
-           f'<p>Środowisko: <b> {ENV} </b></p>'
-           '<p>Wykonane o 11:40</p>')
+    text = f'<h1>Hello, BigData z Pythonem!</h1><p>Przykład CI/CD - automatyczne wdrażanie!</p><p>Wykonał: Bartosz Bryniarski'
+    if ENV == 'developerskie':
+        text += '<style>body { background-color: red; }</style>'
 
-if __name__  == '__main__':
+    return(text)
+
+
+if __name__ == '__main__':
     application.run(debug=True)
