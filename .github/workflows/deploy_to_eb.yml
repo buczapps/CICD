@@ -33,5 +33,5 @@ jobs:
 
       - name: Deploy to Elastic Beanstalk
         run: |
-        eb init cicd-20250426 -p python-3.13 --region eu-central-1
-        eb deploy Cicd-20250426-env
+          eb init cicd-20250426 -p python-3.13 --region eu-central-1
+          eb deploy Cicd-20250426-env
